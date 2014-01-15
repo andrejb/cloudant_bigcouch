@@ -1,0 +1,7 @@
+fix-body_too_large-error
+update-pthread-linking-flags
+disable_embedded_rebar
+disable_embedded_scons
+remove_external_dependencies
+support-destdir.patch
+bigcouch-configuration-changes

@@ -1,0 +1,32 @@
+Index: bigcouch-0.4.2.leap/rebar.config
+===================================================================
+--- bigcouch-0.4.2.leap.orig/rebar.config	2014-01-15 17:25:15.799547067 -0200
++++ bigcouch-0.4.2.leap/rebar.config	2014-01-16 13:53:31.533534156 -0200
+@@ -13,20 +13,13 @@
+ % the License.
+ 
+ {deps, [
+-    {oauth, ".*", {git, "https://github.com/cloudant/erlang-oauth.git",
+-        {tag, "BigCouch-0.4.0"}}},
+-    {ibrowse, ".*", {git, "https://github.com/cloudant/ibrowse.git",
+-        {tag, "CouchDB-1.1.0"}}},
+-    {mochiweb, ".*", {git, "https://github.com/cloudant/mochiweb.git",
+-        {tag, "CouchDB-1.1.0"}}},
+-    {rexi, ".*", {git, "https://github.com/cloudant/rexi.git",
+-        {tag, "1.5.5"}}},
+-    {fabric, ".*", {git, "https://github.com/cloudant/fabric.git",
+-        {tag, "2.0.7"}}},
+-    {mem3, ".*", {git, "https://github.com/cloudant/mem3.git",
+-        {tag, "2.0.0"}}},
+-    {chttpd, ".*", {git, "https://github.com/cloudant/chttpd.git",
+-        {tag, "1.4.3"}}}
++    oauth,
++    ibrowse,
++    mochiweb,
++    rexi,
++    fabric,
++    mem3,
++    chttpd
+ ]}.
+ % needed for a clean transition to the deps model
+ {clean_files, [
