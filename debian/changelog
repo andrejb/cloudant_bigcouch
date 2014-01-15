@@ -1,4 +1,4 @@
-bigcouch (0.4.2-0.1) UNRELEASED; urgency=low
+bigcouch (0.4.2.leap-1) UNRELEASED; urgency=low
 
   * replace embedded rebar with Build-dependency on backported version
   * add remove_external_dependencies patch to stop pulling the 
