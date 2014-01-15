@@ -1,0 +1,27 @@
+Index: cloudant_bigcouch/apps/couch/rebar.config
+===================================================================
+--- cloudant_bigcouch.orig/apps/couch/rebar.config	2014-01-17 07:02:54.167084249 -0500
++++ cloudant_bigcouch/apps/couch/rebar.config	2014-01-17 07:02:54.163084356 -0500
+@@ -1,7 +1,7 @@
+ {so_name, "couch_icu_driver.so"}.
+ {port_envs, [
+   {"DRV_CFLAGS",  "$DRV_CFLAGS -DPIC -O2 -fno-common"},
+-  {"DRV_LDFLAGS", "$DRV_LDFLAGS -lm -licuuc -licudata -licui18n -lpthread"},
++  {"DRV_LDFLAGS", "$DRV_LDFLAGS -lm -licuuc -licudata -licui18n -pthread"},
+   {"linux", "DRV_LDFLAGS", "$DRV_LDFLAGS -lcrypt"},
+   {"freebsd", "DRV_CFLAGS", "$DRV_CFLAGS -I/usr/local/include"},
+   {"freebsd", "DRV_LDFLAGS", "$DRV_LDFLAGS -L/usr/local/lib"},
+Index: cloudant_bigcouch/couchjs/c_src/SConscript
+===================================================================
+--- cloudant_bigcouch.orig/couchjs/c_src/SConscript	2014-01-17 07:02:54.167084249 -0500
++++ cloudant_bigcouch/couchjs/c_src/SConscript	2014-01-17 07:02:54.163084356 -0500
+@@ -23,7 +23,8 @@
+     return commands.getstatusoutput(cmd)
+ 
+ env = Environment(CC="c++", CCFLAGS='-g -O2 -DXP_UNIX',
+-                        CPPPATH=os.getenv("CPPPATH"))
++                        CPPPATH=os.getenv("CPPPATH"),
++                        LINKFLAGS="-pthread")
+ 
+ if os.uname()[0] == 'SunOS':
+    env['CC'] = '/usr/sfw/bin/gcc'

@@ -1,0 +1,25 @@
+Support $(DESTDIR) in Makefile.
+
+Index: bigcouch/Makefile
+===================================================================
+--- bigcouch.orig/Makefile	2014-01-15 16:45:52.258395008 +0000
++++ bigcouch/Makefile	2014-01-15 16:47:42.970395009 +0000
+@@ -41,14 +41,10 @@
+ 
+ include install.mk
+ install: dist
+-	@mkdir -p $(prefix)
+-	@cp -R rel/bigcouch/* $(prefix)
+-	@mkdir -p $(data_dir)
+-	@chown $(user) $(data_dir)
+-	@mkdir -p $(view_dir)
+-	@chown $(user) $(view_dir)
+-	@touch $(prefix)/var/log/bigcouch.log
+-	@chown $(user) $(prefix)/var/log/bigcouch.log
++	@mkdir -p $(DESTDIR)/$(prefix)
++	@cp -R rel/bigcouch/* $(DESTDIR)/$(prefix)
++	@mkdir -p $(DESTDIR)/etc/sv
++	@cp -R rel/sv/bigcouch $(DESTDIR)/etc/sv/
+ 
+ dev: compile
+ 	@rm -rf rel/dev1 rel/dev2 rel/dev3

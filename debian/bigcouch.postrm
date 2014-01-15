@@ -1,0 +1,24 @@
+#!/bin/sh -e
+
+case $1 in
+    purge)
+        if test -d "/etc/sv/bigcouch"; then
+            rm -r -f "/etc/sv/bigcouch"
+        fi
+        if test -d "/opt/bigcouch"; then
+            rm -r -f "/opt/bigcouch"
+        fi
+        if getent passwd bigcouch > /dev/null && which deluser > /dev/null; then
+            for PID in `ps --no-headers -u bigcouch -opid`
+            do
+                kill $PID
+            done
+            deluser bigcouch
+	fi
+        if getent group bigcouch > /dev/null && which delgroup > /dev/null; then
+            delgroup bigcouch
+	fi
+        ;;
+esac
+
+#DEBHELPER#

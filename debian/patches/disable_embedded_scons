@@ -1,0 +1,20 @@
+Index: cloudant_bigcouch/Makefile
+===================================================================
+--- cloudant_bigcouch.orig/Makefile	2014-01-17 07:09:37.100226333 -0500
++++ cloudant_bigcouch/Makefile	2014-01-17 07:10:27.906857239 -0500
+@@ -17,13 +17,13 @@
+ appfile = apps/couch/ebin/couch.app
+ compile:
+ 	@echo "==> couchjs (compile)"
+-	@cd couchjs && python scons/scons.py
++	@cd couchjs && /usr/bin/scons
+ 	@rebar compile
+ 	@cat $(appfile) | sed s/%VSN%/`echo 1.1.1-792-gc8a44ff`/ > $(appfile)
+ 
+ clean:
+ 	@echo "==> couchjs (clean)"
+-	@cd couchjs && python scons/scons.py --clean
++	@cd couchjs && /usr/bin/scons --clean
+ 	@rm -rf couchjs/.sconf_temp couchjs/.sconsign.dblite
+ 	@rebar clean
+ 
