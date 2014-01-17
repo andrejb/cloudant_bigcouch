@@ -1,7 +1,7 @@
 Index: cloudant_bigcouch/configure
 ===================================================================
---- cloudant_bigcouch.orig/configure	2014-01-17 07:06:10.581791425 -0500
-+++ cloudant_bigcouch/configure	2014-01-17 07:06:10.577791533 -0500
+--- cloudant_bigcouch.orig/configure	2014-01-17 15:53:41.428890160 -0500
++++ cloudant_bigcouch/configure	2014-01-17 15:53:41.424890268 -0500
 @@ -88,4 +88,4 @@
  done
  
@@ -10,8 +10,8 @@ Index: cloudant_bigcouch/configure
 +rebar get-deps && rebar update-deps && cat rel/bigcouch.config
 Index: cloudant_bigcouch/deps/ibrowse/Makefile
 ===================================================================
---- cloudant_bigcouch.orig/deps/ibrowse/Makefile	2014-01-17 07:06:10.581791425 -0500
-+++ cloudant_bigcouch/deps/ibrowse/Makefile	2014-01-17 07:06:10.577791533 -0500
+--- cloudant_bigcouch.orig/deps/ibrowse/Makefile	2014-01-17 15:53:41.428890160 -0500
++++ cloudant_bigcouch/deps/ibrowse/Makefile	2014-01-17 15:53:41.424890268 -0500
 @@ -1,17 +1,17 @@
  IBROWSE_VSN = $(shell sed -n 's/.*{vsn,.*"\(.*\)"}.*/\1/p' src/ibrowse.app.src)
  
@@ -35,15 +35,15 @@ Index: cloudant_bigcouch/deps/ibrowse/Makefile
  	-s ibrowse_test verify_chunked_streaming \
 Index: cloudant_bigcouch/Makefile
 ===================================================================
---- cloudant_bigcouch.orig/Makefile	2014-01-17 07:06:05.041940708 -0500
-+++ cloudant_bigcouch/Makefile	2014-01-17 07:06:35.241126925 -0500
+--- cloudant_bigcouch.orig/Makefile	2014-01-17 15:53:41.428890160 -0500
++++ cloudant_bigcouch/Makefile	2014-01-17 15:54:02.736315986 -0500
 @@ -18,23 +18,23 @@
  compile:
  	@echo "==> couchjs (compile)"
  	@cd couchjs && python scons/scons.py
 -	@./rebar compile
 +	@rebar compile
- 	@cat $(appfile) | sed s/%VSN%/`echo 1.1.1-792-gc8a44ff`/ > $(appfile)
+ 	@sed -i 's/%VSN%/1.1.1-792-gc8a44ff/' $(appfile)
  
  clean:
  	@echo "==> couchjs (clean)"
