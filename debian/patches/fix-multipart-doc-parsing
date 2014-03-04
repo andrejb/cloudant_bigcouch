@@ -1,0 +1,13 @@
+Index: cloudant_bigcouch/apps/couch/src/couch_doc.erl
+===================================================================
+--- cloudant_bigcouch.orig/apps/couch/src/couch_doc.erl	2014-02-11 15:11:35.481759012 -0200
++++ cloudant_bigcouch/apps/couch/src/couch_doc.erl	2014-03-04 18:25:27.181214925 -0300
+@@ -486,7 +486,7 @@
+ doc_from_multi_part_stream(ContentType, DataFun) ->
+     Parent = self(),
+     Parser = spawn_link(fun() ->
+-        {<<"--">>, _, _} = couch_httpd:parse_multipart_request(
++        {<<"--",_/binary>>, _, _} = couch_httpd:parse_multipart_request(
+             ContentType, DataFun,
+             fun(Next) -> mp_parse_doc(Next, []) end),
+         unlink(Parent),
